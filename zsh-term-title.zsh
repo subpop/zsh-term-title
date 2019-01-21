@@ -5,7 +5,8 @@ function xterm_title_precmd () {
 }
 	
 function xterm_title_preexec () {
-	print -n "\e]2;$2\a"
+	_cmd=($(echo $2))
+	print -n "\e]2;${(q)_cmd[1]}\a"
 }
 	
 if [[ "$TERM" == (screen*|xterm*|rxvt*) ]]; then
